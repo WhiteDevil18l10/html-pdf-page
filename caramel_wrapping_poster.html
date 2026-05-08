@@ -1,0 +1,361 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0D1B2A;
+  --navy2:#1A2C3E;
+  --gold:#C8933A;
+  --gold-lt:#E8B96A;
+  --cream:#F5F0E8;
+  --cream2:#EDE6D8;
+  --text:#1A1208;
+  --muted:#5A4F3E;
+  --accent:#2B6BAD;
+  --green:#2A7A4B;
+  --green-lt:#D4EDDF;
+  --border:#D4C9B0;
+}
+
+body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--text);font-size:13px;line-height:1.5}
+.poster{width:100%;max-width:900px;margin:0 auto;padding:0 0 32px}
+
+/* Header */
+.header{background:var(--navy);color:white;padding:28px 36px 24px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:0;right:0;width:200px;height:100%;background:linear-gradient(135deg,transparent 60%,rgba(200,147,58,0.12));pointer-events:none}
+.header-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:8px;font-weight:500}
+.header-title{font-family:'DM Serif Display',serif;font-size:32px;color:white;line-height:1.1;margin-bottom:4px}
+.header-title span{color:var(--gold-lt)}
+.header-sub{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:18px}
+.header-meta{display:flex;gap:32px;flex-wrap:wrap}
+.meta-group label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.45);display:block;margin-bottom:2px}
+.meta-group span{font-size:12.5px;color:rgba(255,255,255,0.85)}
+.gold-bar{height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-lt),transparent);margin:0}
+
+/* Stats row */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);background:var(--navy2)}
+.stat-box{padding:16px 12px;text-align:center;border-right:0.5px solid rgba(255,255,255,0.08)}
+.stat-box:last-child{border-right:none}
+.stat-num{font-family:'DM Serif Display',serif;font-size:26px;color:var(--gold-lt);display:block;line-height:1}
+.stat-lbl{font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.8px;margin-top:4px;display:block}
+
+/* Body */
+.body{padding:24px 28px;display:grid;gap:20px}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+
+/* Section cards */
+.card{background:white;border:0.5px solid var(--border);border-radius:8px;overflow:hidden}
+.card-head{background:var(--navy);color:white;padding:9px 14px;display:flex;align-items:center;gap:8px}
+.card-num{background:var(--gold);color:white;width:20px;height:20px;border-radius:50%;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-title{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px}
+.card-body{padding:14px}
+
+/* Problem section */
+.need-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.need-item{background:var(--cream);border-left:3px solid var(--gold);padding:6px 8px;border-radius:0 4px 4px 0;font-size:11.5px}
+.req-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11.5px}
+.req-table th{background:var(--navy2);color:rgba(255,255,255,0.85);padding:5px 8px;text-align:left;font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:0.5px}
+.req-table td{padding:5px 8px;border-bottom:0.5px solid var(--border)}
+.req-table tr:last-child td{border-bottom:none}
+.req-table tr:nth-child(odd) td{background:var(--cream)}
+.badge-met{background:#D4EDDF;color:#1A5C33;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:500}
+
+/* Concept generation */
+.concept-list{margin:0;padding:0;list-style:none}
+.concept-list li{padding:5px 0;border-bottom:0.5px solid var(--cream2);font-size:12px;display:flex;align-items:center;gap:6px}
+.concept-list li:last-child{border-bottom:none}
+.c-tag{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;flex-shrink:0}
+.c-sel{background:#D4EDDF;color:#1A5C33}
+.c-rej{background:var(--cream2);color:var(--muted)}
+.score-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}
+.score-table th{background:var(--cream2);padding:5px 7px;text-align:center;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted)}
+.score-table th:first-child{text-align:left}
+.score-table td{padding:5px 7px;border-bottom:0.5px solid var(--border);text-align:center}
+.score-table td:first-child{text-align:left;font-weight:500}
+.score-table tr.winner td{background:#D4EDDF;font-weight:600;color:#1A5C33}
+.score-cell{font-weight:600;color:var(--navy2)}
+
+/* Architecture */
+.subsys{margin-bottom:12px}
+.subsys:last-child{margin-bottom:0}
+.subsys-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);font-weight:600;margin-bottom:6px}
+.flow-steps{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.flow-step{background:var(--navy);color:white;padding:5px 10px;border-radius:4px;font-size:11px;white-space:nowrap}
+.flow-arrow{color:var(--gold);font-size:14px;font-weight:300}
+.seal-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.seal-box{border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center}
+.seal-box.selected{border-color:var(--green);background:var(--green-lt)}
+.seal-box-title{font-size:11px;font-weight:600;margin-bottom:4px}
+.seal-box.selected .seal-box-title{color:var(--green)}
+.seal-desc{font-size:11px;color:var(--muted)}
+
+/* Design features */
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.feature{background:var(--cream);border-radius:6px;padding:9px 10px}
+.feature-name{font-size:11.5px;font-weight:600;color:var(--navy2);margin-bottom:2px}
+.feature-desc{font-size:11px;color:var(--muted)}
+
+/* Results */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.result-item{background:var(--green-lt);border:0.5px solid #8CC9A8;border-radius:6px;padding:9px 10px;text-align:center}
+.result-val{font-family:'DM Serif Display',serif;font-size:18px;color:#1A5C33;display:block}
+.result-lbl{font-size:10px;color:#2A7A4B;text-transform:uppercase;letter-spacing:0.5px;margin-top:1px}
+.result-status{font-size:10px;color:#1A5C33;font-weight:600;margin-top:4px;display:block}
+.comparison-table{width:100%;border-collapse:collapse;font-size:11.5px}
+.comparison-table th{background:var(--navy);color:rgba(255,255,255,0.85);padding:6px 10px;text-align:left;font-weight:500;font-size:11px}
+.comparison-table td{padding:6px 10px;border-bottom:0.5px solid var(--border)}
+.comparison-table tr:last-child td{border-bottom:none}
+.comparison-table tr:nth-child(odd) td{background:var(--cream)}
+.hl{color:var(--green);font-weight:600}
+
+/* Prototype */
+.sys-features{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sys-feat{display:flex;gap:8px;align-items:flex-start;background:var(--cream);border-radius:6px;padding:8px 10px}
+.sys-feat-icon{width:28px;height:28px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sys-feat-icon span{color:var(--gold-lt);font-size:13px;font-weight:700}
+.sys-feat-text strong{font-size:12px;font-weight:600;display:block;color:var(--navy2)}
+.sys-feat-text small{font-size:11px;color:var(--muted)}
+
+/* Rationale */
+.why-box{background:var(--navy2);color:white;border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.why-q{font-size:11px;font-weight:600;color:var(--gold-lt);margin-bottom:3px}
+.why-a{font-size:11.5px;color:rgba(255,255,255,0.8);line-height:1.5}
+
+/* Footer */
+.footer{background:var(--navy);color:rgba(255,255,255,0.55);padding:10px 28px;display:flex;justify-content:space-between;align-items:center;font-size:10.5px;margin-top:4px}
+.footer strong{color:rgba(255,255,255,0.8)}
+
+.intro-text{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+</style>
+
+<div class="poster">
+  <div class="header">
+    <div class="header-tag">Monash University · Faculty of Engineering · Final Year Project 2024</div>
+    <div class="header-title">Semi-Autonomous <span>Caramel Wrapping</span></div>
+    <div class="header-sub">Automating boutique confectionery packaging for 338 Degrees Confectionery</div>
+    <div class="header-meta">
+      <div class="meta-group"><label>Team</label><span>Aakaash Singh Chauhan · Hai-Ning Cheng · Paul Baskaraboopathi</span></div>
+      <div class="meta-group"><label>Supervisors</label><span>Kevin Otto · Jonathan Eden</span></div>
+      <div class="meta-group"><label>Project ID</label><span>ME-21-OKEV-008</span></div>
+      <div class="meta-group"><label>Discipline</label><span>Mechanical &amp; Electrical</span></div>
+    </div>
+  </div>
+  <div class="gold-bar"></div>
+
+  <div class="stats-row">
+    <div class="stat-box"><span class="stat-num">&lt;5s</span><span class="stat-lbl">Cycle time / unit</span></div>
+    <div class="stat-box"><span class="stat-num">5</span><span class="stat-lbl">Simultaneous units</span></div>
+    <div class="stat-box"><span class="stat-num">±1mm</span><span class="stat-lbl">Fold tolerance</span></div>
+    <div class="stat-box"><span class="stat-num">5×</span><span class="stat-lbl">Throughput gain</span></div>
+    <div class="stat-box"><span class="stat-num">2</span><span class="stat-lbl">Caramel size variants</span></div>
+  </div>
+
+  <div class="body">
+
+    <!-- Row 1: Problem + Concept -->
+    <div class="row-2">
+
+      <!-- 1. Problem -->
+      <div class="card">
+        <div class="card-head"><div class="card-num">1</div><div class="card-title">Problem Definition &amp; Customer Needs</div></div>
+        <div class="card-body">
+          <p class="intro-text">Manual wrapping at ~25 sec/unit is unsustainable for growing small-batch production. Operator-dependent quality creates inconsistency in a premium product line.</p>
+          <div class="need-grid">
+            <div class="need-item">Benchtop / portable form factor</div>
+            <div class="need-item">Artisanal hand-crafted aesthetic</div>
+            <div class="need-item">Std &amp; half-length caramel support</div>
+            <div class="need-item">Biodegradable wrap compatibility</div>
+            <div class="need-item">Minimal manual intervention</div>
+            <div class="need-item">Small-batch throughput targets</div>
+          </div>
+          <table class="req-table" style="margin-top:12px">
+            <tr><th>Requirement</th><th>Target</th></tr>
+            <tr><td>Wrap cycle time</td><td>&lt;5 sec/unit</td></tr>
+            <tr><td>Batch size</td><td>5 units simultaneous</td></tr>
+            <tr><td>Fold symmetry</td><td>±1 mm tolerance</td></tr>
+            <tr><td>Seal temperature</td><td>Localised to interface</td></tr>
+            <tr><td>Size variants</td><td>2 (Std + Half-length)</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2. Concept Generation -->
+      <div class="card">
+        <div class="card-head"><div class="card-num">2</div><div class="card-title">Concept Generation &amp; Downselection</div></div>
+        <div class="card-body">
+          <div style="margin-bottom:10px">
+            <div class="subsys-lbl" style="color:var(--navy2);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Wrapping concepts</div>
+            <ul class="concept-list">
+              <li><span class="c-tag c-rej">Rejected</span>Rotary wrap — complex, fold inconsistency</li>
+              <li><span class="c-tag c-rej">Rejected</span>Conveyor fold — large footprint, high cost</li>
+              <li><span class="c-tag c-rej">Rejected</span>Envelope fold — difficult material handling</li>
+              <li><span class="c-tag c-sel">Selected</span>Slot-guided fold — compact, precise, repeatable</li>
+            </ul>
+          </div>
+          <div style="margin-bottom:10px">
+            <div class="subsys-lbl" style="color:var(--navy2);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Sealing concepts</div>
+            <ul class="concept-list">
+              <li><span class="c-tag c-rej">Rejected</span>Impulse sealer — damages biodegradable wrap</li>
+              <li><span class="c-tag c-rej">Rejected</span>Rolling seal — uneven pressure</li>
+              <li><span class="c-tag c-sel">Selected</span>2-sided precision seal — fast, localised</li>
+            </ul>
+          </div>
+          <table class="score-table">
+            <tr><th style="text-align:left">Concept</th><th>Compact</th><th>Repeat.</th><th>Simple</th><th>Precise</th><th>Total</th></tr>
+            <tr><td>Rotary wrap</td><td>2</td><td>2</td><td>1</td><td>2</td><td>7</td></tr>
+            <tr><td>Conveyor fold</td><td>1</td><td>3</td><td>2</td><td>3</td><td>9</td></tr>
+            <tr><td>Envelope fold</td><td>3</td><td>2</td><td>2</td><td>2</td><td>9</td></tr>
+            <tr class="winner"><td>Slot-guided fold ✓</td><td class="score-cell">4</td><td class="score-cell">4</td><td class="score-cell">4</td><td class="score-cell">4</td><td class="score-cell">16</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Architecture + Design Justification -->
+    <div class="row-2">
+
+      <!-- 3. Architecture -->
+      <div class="card">
+        <div class="card-head"><div class="card-num">3</div><div class="card-title">System Architecture</div></div>
+        <div class="card-body">
+          <div class="subsys">
+            <div class="subsys-lbl">Wrapping subsystem</div>
+            <div class="flow-steps">
+              <div class="flow-step">Load</div><div class="flow-arrow">→</div>
+              <div class="flow-step">Position Jig</div><div class="flow-arrow">→</div>
+              <div class="flow-step">Slot Fold</div><div class="flow-arrow">→</div>
+              <div class="flow-step">±1mm Check</div>
+            </div>
+          </div>
+          <div class="subsys" style="margin-top:12px">
+            <div class="subsys-lbl">Sealing subsystem</div>
+            <div class="flow-steps">
+              <div class="flow-step">Heat On</div><div class="flow-arrow">→</div>
+              <div class="flow-step">FEA Valid.</div><div class="flow-arrow">→</div>
+              <div class="flow-step">2-Side Seal</div><div class="flow-arrow">→</div>
+              <div class="flow-step">Inspect</div>
+            </div>
+          </div>
+          <div class="seal-compare" style="margin-top:14px">
+            <div class="seal-box selected">
+              <div class="seal-box-title">✓ 2-Sided Seal — Selected</div>
+              <div class="seal-desc">Superior speed, mechanical reliability, premium aesthetic quality</div>
+            </div>
+            <div class="seal-box">
+              <div class="seal-box-title">3-Sided Seal — Evaluated</div>
+              <div class="seal-desc">Envelope fold variant; slower cycle, heavier mechanism</div>
+            </div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:10px;font-style:italic">FEA confirmed heat localised to sealing interface — no thermal damage to adjacent components. Electrical load calcs validated safety margins.</p>
+        </div>
+      </div>
+
+      <!-- 5. Design Justification -->
+      <div class="card">
+        <div class="card-head"><div class="card-num">5</div><div class="card-title">Design Justification</div></div>
+        <div class="card-body">
+          <div class="why-box">
+            <div class="why-q">Why 2-sided seal?</div>
+            <div class="why-a">Faster cycle time, simpler mechanism, equivalent seal quality for biodegradable wrap versus 3-sided configuration.</div>
+          </div>
+          <div class="why-box">
+            <div class="why-q">Why slot-guided fold?</div>
+            <div class="why-a">Highest selection score (16/16): compact, repeatable, precise, low complexity — eliminates operator skill dependency entirely.</div>
+          </div>
+          <div class="subsys-lbl" style="margin-top:12px;margin-bottom:8px;color:var(--navy2);font-size:10px;text-transform:uppercase;letter-spacing:1px">Operational process flow</div>
+          <div class="flow-steps" style="flex-direction:column;align-items:flex-start;gap:5px">
+            <div style="display:flex;align-items:center;gap:6px"><div class="flow-step" style="background:var(--cream2);color:var(--navy2);border:1px solid var(--border)">Product Input</div><span style="font-size:11px;color:var(--muted)">Std caramel or half-length variant</span></div>
+            <div class="flow-arrow" style="margin-left:20px">↓</div>
+            <div style="display:flex;align-items:center;gap:6px"><div class="flow-step">Wrap &amp; Seal Execution</div><span style="font-size:11px;color:var(--muted)">Slot fold + 2-sided seal</span></div>
+            <div class="flow-arrow" style="margin-left:20px">↓</div>
+            <div style="display:flex;align-items:center;gap:6px"><div class="flow-step" style="background:var(--green);color:white">Validation / Output</div><span style="font-size:11px;color:var(--muted)">Inspection → pass / feedback loop</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row: CAD + Validation -->
+    <div class="row-2">
+
+      <!-- 4. Final Design -->
+      <div class="card">
+        <div class="card-head"><div class="card-num">4</div><div class="card-title">Final System Design — CAD Overview</div></div>
+        <div class="card-body">
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-name">5-Slot Positioning Jig</div>
+              <div class="feature-desc">Precision-calibrated placement eliminates manual alignment error across all 5 units</div>
+            </div>
+            <div class="feature">
+              <div class="feature-name">Slot-Guided Fold Mechanism</div>
+              <div class="feature-desc">Achieves symmetrical ±1 mm fold geometry automatically — no operator skill required</div>
+            </div>
+            <div class="feature">
+              <div class="feature-name">FEA-Validated Thermal Sealer</div>
+              <div class="feature-desc">Heat localised to sealing interface — no damage to adjacent materials or components</div>
+            </div>
+            <div class="feature">
+              <div class="feature-name">Dual-Size Compatibility</div>
+              <div class="feature-desc">Supports standard and half-length caramel variants within the same jig system</div>
+            </div>
+          </div>
+          <div style="background:var(--navy2);border-radius:6px;padding:10px 12px;margin-top:12px">
+            <div class="subsys-lbl" style="margin-bottom:6px">Simultaneous 5-unit positioning process</div>
+            <div class="flow-steps">
+              <div class="flow-step" style="font-size:10.5px">Load 5 units</div><div class="flow-arrow">→</div>
+              <div class="flow-step" style="font-size:10.5px">Setup jig</div><div class="flow-arrow">→</div>
+              <div class="flow-step" style="font-size:10.5px">Calibrate positions</div><div class="flow-arrow">→</div>
+              <div class="flow-step" style="background:var(--green);font-size:10.5px">Secure &amp; wrap</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Validation -->
+      <div class="card">
+        <div class="card-head"><div class="card-num">6</div><div class="card-title">Validation &amp; Results</div></div>
+        <div class="card-body">
+          <div class="results-grid" style="grid-template-columns:repeat(3,1fr)">
+            <div class="result-item"><span class="result-val">&lt;5s</span><span class="result-lbl">Wrap time/unit</span><span class="result-status">✓ Met</span></div>
+            <div class="result-item"><span class="result-val">5 units</span><span class="result-lbl">Simultaneous</span><span class="result-status">✓ Met</span></div>
+            <div class="result-item"><span class="result-val">±1mm</span><span class="result-lbl">Fold symmetry</span><span class="result-status">✓ Met</span></div>
+            <div class="result-item"><span class="result-val">FEA</span><span class="result-lbl">Thermal localised</span><span class="result-status">✓ Validated</span></div>
+            <div class="result-item"><span class="result-val">2 sizes</span><span class="result-lbl">Caramel variants</span><span class="result-status">✓ Met</span></div>
+            <div class="result-item"><span class="result-val">5×</span><span class="result-lbl">Throughput gain</span><span class="result-status">✓ Achieved</span></div>
+          </div>
+          <table class="comparison-table" style="margin-top:2px">
+            <tr><th>Metric</th><th>Manual</th><th>Semi-Autonomous</th></tr>
+            <tr><td>Production</td><td>Sequential (1-by-1)</td><td class="hl">Simultaneous (5 units)</td></tr>
+            <tr><td>Cycle time</td><td>~25 sec/unit</td><td class="hl">&lt;5 sec/unit</td></tr>
+            <tr><td>Precision</td><td>Operator skill</td><td class="hl">Mech. jig ±1 mm</td></tr>
+            <tr><td>Aesthetic variance</td><td>High variable margin</td><td class="hl">&lt;1 mm deviation</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Prototype summary -->
+    <div class="card">
+      <div class="card-head"><div class="card-num">7</div><div class="card-title">Final Prototype — System Summary</div></div>
+      <div class="card-body">
+        <p class="intro-text" style="margin-bottom:12px">2-sided seal, 5-slot jig, slot-guided fold mechanism. All engineering requirements met. Biodegradable wrap compatible. Dual caramel size support validated.</p>
+        <div class="sys-features">
+          <div class="sys-feat"><div class="sys-feat-icon"><span>⊞</span></div><div class="sys-feat-text"><strong>Slot-guided fold</strong><small>Symmetrical ±1mm wrapping, no operator dependency</small></div></div>
+          <div class="sys-feat"><div class="sys-feat-icon"><span>◈</span></div><div class="sys-feat-text"><strong>2-sided sealer</strong><small>FEA-validated thermal control, localised heat</small></div></div>
+          <div class="sys-feat"><div class="sys-feat-icon"><span>⊡</span></div><div class="sys-feat-text"><strong>5-unit batch jig</strong><small>Precision alignment, calibrated positions</small></div></div>
+          <div class="sys-feat"><div class="sys-feat-icon"><span>↔</span></div><div class="sys-feat-text"><strong>Dual-size support</strong><small>Std + half-length caramel, same system</small></div></div>
+          <div class="sys-feat"><div class="sys-feat-icon"><span>♻</span></div><div class="sys-feat-text"><strong>Bio-wrap compatible</strong><small>Localised sealing avoids material damage</small></div></div>
+          <div class="sys-feat"><div class="sys-feat-icon"><span>⬜</span></div><div class="sys-feat-text"><strong>Benchtop form factor</strong><small>Fits existing workspace, portable design</small></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Monash University · Faculty of Engineering · Final Year Project 2024</span>
+    <strong>ME-21-OKEV-008 · Semi-Autonomous Caramel Wrapping System</strong>
+  </div>
+</div>
